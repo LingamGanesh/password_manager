@@ -1,97 +1,131 @@
-/* ---------- Password Item Container ---------- */
-.pm-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* ---------- COMMENT ITEM MAIN CARD ---------- */
+.comment-item {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 22px;
+  margin: 20px 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease-in-out;
+  list-style: none;
 }
 
-.pm-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+.comment-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* ---------- Left Section ---------- */
-.pm-item-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-/* Avatar Circle */
-.pm-avatar {
-  width: 45px;
-  height: 45px;
-  background-color: #6c63ff;
+/* ---------- USER ICON (Circle) ---------- */
+.initial {
   color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.initial-container,
+.initialCircle,
+.comment-user-circle {
+  background: linear-gradient(135deg, #4a90e2, #9013fe);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
+  font-size: 22px;
+  color: #fff;
   font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Website + Username */
-.pm-item-info p {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
+/* If your project uses dynamic class - keep it */
+.initialClassName {
+  background: linear-gradient(135deg, #4a90e2, #9013fe);
 }
 
-.pm-item-website {
+/* ---------- USERNAME + TIME ---------- */
+.username-time-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.time {
+  font-size: 12px;
+  color: #d3d3d3;
+}
+
+/* ---------- COMMENT TEXT ---------- */
+.comment {
+  margin-top: 6px;
+  color: #ececec;
   font-size: 16px;
-  font-weight: 600;
-  color: #333;
+  line-height: 1.5;
 }
 
-.pm-item-username {
-  font-size: 14px;
-  color: #666;
-}
-
-/* ---------- Right Section ---------- */
-.pm-item-right {
+/* ---------- LIKE + DELETE ROW ---------- */
+.buttons-container {
+  margin-top: 14px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
 }
 
-/* Password Text or Stars */
-.pm-password-display {
+/* LIKE */
+.like-container {
   display: flex;
   align-items: center;
 }
 
-.pm-password-text {
-  font-size: 15px;
-  font-weight: 500;
-  color: #222;
+.like-image {
+  width: 22px;
+  margin-right: 8px;
 }
 
-.pm-stars-img {
-  width: 90px;
-}
-
-/* ---------- Delete Button ---------- */
-.pm-delete-btn {
+/* Like Button */
+.button {
   background: transparent;
-  border: none;
-  padding: 0;
+  border: 1px solid #ffffff88;
+  padding: 6px 14px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  color: #fff;
+  transition: 0.2s;
+  font-weight: 600;
 }
 
-.pm-delete-btn:hover {
-  transform: scale(1.15);
+.button:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
-.pm-delete-img {
+.button.active {
+  background: #6a5acd;
+  border-color: #6a5acd;
+  color: white;
+  box-shadow: 0px 3px 10px rgba(106, 90, 205, 0.4);
+}
+
+/* DELETE BUTTON */
+.delete {
   width: 24px;
+}
+
+.comment-line {
+  margin-top: 18px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* LAYOUT INSIDE ITEM */
+.comment-container {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
 }

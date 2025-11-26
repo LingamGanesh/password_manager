@@ -1,279 +1,158 @@
-/* Basic reset and layout */
-.pm-app-bg {
-  font-family: Roboto, sans-serif;
-  background: #f8fafc;
+/* ---------- MAIN APP BACKGROUND ---------- */
+.app-container {
   min-height: 100vh;
-  padding: 24px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  font-family: "Inter", sans-serif;
 }
 
-.pm-container {
-  width: 100%;
-  max-width: 1000px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-  overflow: hidden;
+/* ---------- COMMENTS BOX ---------- */
+.comments-container {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 30px;
+  width: 850px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Header */
-.pm-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px;
-  background: linear-gradient(90deg, #9ba9eb 0%, #7683cb 100%);
-  color: white;
-}
-
-.pm-logo {
-  width: 160px;
-}
-
-.pm-top-image {
-  width: 140px;
-}
-
-/* Body */
-.pm-body {
-  display: flex;
-  gap: 24px;
-  padding: 24px;
-  flex-wrap: wrap;
-  background: #fff;
-}
-
-/* Form */
-.pm-form-section {
-  flex: 1 1 360px;
-  min-width: 280px;
-}
-
-.pm-form-heading {
-  margin: 0 0 12px 0;
-  color: #454f84;
-}
-
-.pm-input-row {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.pm-input-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  border-radius: 6px;
-  padding: 8px;
-  border: 1px solid #e6edf6;
-}
-
-.pm-input-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.pm-input {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  padding: 6px 4px;
-}
-
-/* Add button */
-.pm-add-btn-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 6px;
-}
-
-.pm-add-btn {
-  background: #0b69ff;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-/* Passwords section */
-.pm-passwords-section {
-  flex: 1 1 420px;
-  min-width: 300px;
-}
-
-.pm-passwords-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.pm-heading {
-  margin: 0;
-  color: #454f84;
-}
-
-.pm-search-count-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.pm-search-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 8px;
-  border-radius: 6px;
-  border: 1px solid #e6edf6;
-}
-
-.pm-search-icon {
-  width: 18px;
-  height: 18px;
-}
-
-.pm-search-input {
-  border: none;
-  outline: none;
-  font-size: 14px;
-  padding: 4px;
-}
-
-.pm-count {
-  background: #c3caea;
-  color: #454f84;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-weight: 600;
-}
-
-/* Show password row */
-.pm-show-passwords-row {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pm-show-label {
-  cursor: pointer;
-}
-
-/* Divider */
-.pm-divider {
-  margin: 12px 0;
-  border: 0;
-  height: 1px;
-  background: #eef2ff;
-}
-
-/* List */
-.pm-list-section {
-  min-height: 120px;
-}
-
-.pm-no-passwords {
+/* ---------- MAIN HEADING ---------- */
+.app-heading {
   text-align: center;
-  padding: 32px 12px;
+  font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-.pm-no-passwords-img {
-  width: 120px;
-  max-width: 50%;
-}
-
-.pm-no-passwords-text {
-  color: #64748b;
-  margin-top: 8px;
-  font-size: 18px;
-}
-
-/* Password item */
-.pm-passwords-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.pm-item {
+/* ---------- FORM SECTION ---------- */
+.comments-inputs {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid #eef2ff;
+  gap: 25px;
+  align-items: flex-start;
 }
 
-.pm-item-left {
+.form {
+  flex: 1;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.pm-avatar {
-  width: 45px;
-  height: 45px;
+.form-description {
+  font-size: 16px;
+  color: #cbd5e1;
+}
+
+/* INPUTS */
+.name-input,
+.comment-input {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 12px 14px;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+}
+
+.name-input::placeholder,
+.comment-input::placeholder {
+  color: #d1d5db;
+}
+
+/* ---------- ADD BUTTON ---------- */
+.add-button {
+  background: #6366f1;
+  border: none;
+  padding: 12px 18px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-button:hover {
+  background: #4f46e5;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+}
+
+/* ---------- IMAGE ---------- */
+.image {
+  width: 320px;
+  border-radius: 16px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- LINE ---------- */
+.line {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 25px 0;
+}
+
+/* ---------- TOTAL COMMENTS COUNT ---------- */
+.heading {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.comments-count {
+  background: #6366f1;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* ---------- COMMENT LIST ---------- */
+.comments-list {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* ---------- INITIAL COLORS ---------- */
+.initial-container {
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
-  background: #9ba9eb;
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-weight: 700;
-  font-size: 18px;
 }
 
-.pm-item-info {
-  display: flex;
-  flex-direction: column;
+/* Dynamic Bgs */
+.amber {
+  background: #f59e0b;
 }
-
-.pm-item-website {
-  margin: 0;
-  font-weight: 600;
-  color: #454f84;
+.blue {
+  background: #3b82f6;
 }
-
-.pm-item-username {
-  margin: 0;
-  color: #64748b;
+.orange {
+  background: #f97316;
 }
-
-.pm-item-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.emerald {
+  background: #10b981;
 }
-
-.pm-stars-img {
-  width: 80px;
+.teal {
+  background: #14b8a6;
 }
-
-.pm-password-text {
-  margin: 0 6px;
-  color: #1f2937;
-  font-weight: 600;
+.red {
+  background: #ef4444;
 }
-
-.pm-delete-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: inline-flex;
-}
-
-.pm-delete-img {
-  width: 18px;
-  height: 18px;
+.light-blue {
+  background: #0ea5e9;
 }

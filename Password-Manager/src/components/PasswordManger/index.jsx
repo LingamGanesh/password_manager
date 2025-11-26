@@ -1,193 +1,151 @@
-import React, {useState} from 'react'
-import PasswordItem from '../PasswordItem'
+import {Component} from 'react'
+import {v4} from 'uuid'
+
+import CommentItem from '../PasswordItem'
+
 import './style.css'
 
-const initialPasswords = []
+const initialContainerBackgroundClassNames = [
+  'amber',
+  'blue',
+  'orange',
+  'emerald',
+  'teal',
+  'red',
+  'light-blue',
+]
 
-const PasswordManager = () => {
-  const [website, setWebsite] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordsList, setPasswordsList] = useState(initialPasswords)
-  const [searchInput, setSearchInput] = useState('')
-  const [showPasswords, setShowPasswords] = useState(false)
+class Comments extends Component {
+  state = {
+    nameInput: '',
+    commentInput: '',
+    commentsList: [],
+  }
 
-  const onAddPassword = event => {
+  // Delete Comment
+  deleteComment = id => {
+    this.setState(prevState => ({
+      commentsList: prevState.commentsList.filter(
+        each => each.id !== id,
+      ),
+    }))
+  }
+
+  // Toggle Like
+  toggleIsLiked = id => {
+    this.setState(prevState => ({
+      commentsList: prevState.commentsList.map(each => {
+        if (each.id === id) {
+          return {...each, isLiked: !each.isLiked}
+        }
+        return each
+      }),
+    }))
+  }
+
+  // Render All Comments
+  renderCommentsList = () => {
+    const {commentsList} = this.state
+    return commentsList.map(each => (
+      <CommentItem
+        key={each.id}
+        commentDetails={each}
+        toggleIsLiked={this.toggleIsLiked}
+        deleteComment={this.deleteComment}
+      />
+    ))
+  }
+
+  // Submit Handler
+  onAddComment = event => {
     event.preventDefault()
-    // only add when all fields non-empty
-    if (
-      website.trim() === '' ||
-      username.trim() === '' ||
-      password.trim() === ''
-    ) {
-      return
+    const {nameInput, commentInput} = this.state
+
+    if (nameInput.trim() === '' || commentInput.trim() === '') return
+
+    const randomBgColor =
+      initialContainerBackgroundClassNames[
+        Math.floor(Math.random() * initialContainerBackgroundClassNames.length)
+      ]
+
+    const newComment = {
+      id: v4(),
+      name: nameInput,
+      comment: commentInput,
+      date: new Date(),
+      isLiked: false,
+      initialClassName: `initial-container ${randomBgColor}`,
     }
-    const newItem = {
-      id: Date.now().toString(),
-      website: website.trim(),
-      username: username.trim(),
-      password: password.trim(),
-    }
-    setPasswordsList(prev => [newItem, ...prev])
-    setWebsite('')
-    setUsername('')
-    setPassword('')
+
+    this.setState(prevState => ({
+      commentsList: [...prevState.commentsList, newComment],
+      nameInput: '',
+      commentInput: '',
+    }))
   }
 
-  const onDeletePassword = id => {
-    setPasswordsList(prev => prev.filter(item => item.id !== id))
+  onChangeCommentInput = event => {
+    this.setState({commentInput: event.target.value})
   }
 
-  const filteredList = passwordsList.filter(item =>
-    item.website.toLowerCase().includes(searchInput.toLowerCase()),
-  )
+  onChangeNameInput = event => {
+    this.setState({nameInput: event.target.value})
+  }
 
-  const passwordsCount = filteredList.length
+  render() {
+    const {nameInput, commentInput, commentsList} = this.state
 
-  return (
-    <div className="pm-app-bg">
-      <div className="pm-container">
-        <div className="pm-header">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/password-manager-logo-img.png"
-            alt="app logo"
-            className="pm-logo"
-          />
-          <div className="pm-top-image-container">
+    return (
+      <div className="app-container">
+        <div className="comments-container">
+          <h1 className="app-heading">Comments</h1>
+
+          <div className="comments-inputs">
+            <form className="form" onSubmit={this.onAddComment}>
+              <p className="form-description">
+                Say something about 4.0 Technologies
+              </p>
+
+              <input
+                type="text"
+                className="name-input"
+                placeholder="Your Name"
+                value={nameInput}
+                onChange={this.onChangeNameInput}
+              />
+
+              <textarea
+                className="comment-input"
+                placeholder="Your Comment"
+                rows="6"
+                value={commentInput}
+                onChange={this.onChangeCommentInput}
+              />
+
+              <button type="submit" className="add-button">
+                Add Comment
+              </button>
+            </form>
+
             <img
-              src="https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png"
-              alt="password manager"
-              className="pm-top-image"
+              className="image"
+              src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
+              alt="comments"
             />
           </div>
-        </div>
 
-        <div className="pm-body">
-          <div className="pm-form-section">
-            <form className="pm-form" onSubmit={onAddPassword}>
-              <h1 className="pm-form-heading">Add New Password</h1>
-              <div className="pm-input-row">
-                <div className="pm-input-wrapper">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png"
-                    alt="website"
-                    className="pm-input-icon"
-                  />
-                  <input
-                    placeholder="Enter Website"
-                    value={website}
-                    onChange={e => setWebsite(e.target.value)}
-                    className="pm-input"
-                  />
-                </div>
-                <div className="pm-input-wrapper">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png"
-                    alt="username"
-                    className="pm-input-icon"
-                  />
-                  <input
-                    placeholder="Enter Username"
-                    value={username}
-                    onChange={e => setUsername(e.target.value)}
-                    className="pm-input"
-                  />
-                </div>
-                <div className="pm-input-wrapper">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
-                    alt="password"
-                    className="pm-input-icon"
-                  />
-                  <input
-                    placeholder="Enter Password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    className="pm-input"
-                  />
-                </div>
+          <hr className="line" />
 
-                <div className="pm-add-btn-wrapper">
-                  <button type="submit" className="pm-add-btn">
-                    Add
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+          <p className="heading">
+            <span className="comments-count">{commentsList.length}</span>
+            Comments
+          </p>
 
-          <div className="pm-passwords-section">
-            <div className="pm-passwords-header">
-              <h1 className="pm-heading">Your Passwords</h1>
-              <div className="pm-search-count-row">
-                <div className="pm-search-wrapper">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
-                    alt="search"
-                    className="pm-search-icon"
-                  />
-                  <input
-                    placeholder="Search"
-                    value={searchInput}
-                    onChange={e => setSearchInput(e.target.value)}
-                    className="pm-search-input"
-                  />
-                </div>
-                <p className="pm-count">{passwordsCount}</p>
-              </div>
-            </div>
-
-            <div className="pm-show-passwords-row">
-              <input
-                id="showPasswords"
-                type="checkbox"
-                checked={showPasswords}
-                onChange={e => setShowPasswords(e.target.checked)}
-              />
-              <label htmlFor="showPasswords" className="pm-show-label">
-                Show Passwords
-              </label>
-            </div>
-
-            <hr className="pm-divider" />
-
-            <div className="pm-list-section">
-              {passwordsList.length === 0 ? (
-                <div className="pm-no-passwords">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
-                    alt="no passwords"
-                    className="pm-no-passwords-img"
-                  />
-                  <p className="pm-no-passwords-text">No Passwords</p>
-                </div>
-              ) : filteredList.length === 0 ? (
-                <div className="pm-no-passwords">
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
-                    alt="no passwords"
-                    className="pm-no-passwords-img"
-                  />
-                  <p className="pm-no-passwords-text">No Passwords</p>
-                </div>
-              ) : (
-                <ul className="pm-passwords-list">
-                  {filteredList.map(item => (
-                    <PasswordItem
-                      key={item.id}
-                      passwordDetails={item}
-                      showPassword={showPasswords}
-                      deletePassword={onDeletePassword}
-                    />
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
+          <ul className="comments-list">{this.renderCommentsList()}</ul>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-export default PasswordManager
+export default Comments
