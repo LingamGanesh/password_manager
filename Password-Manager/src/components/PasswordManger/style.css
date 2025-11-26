@@ -1,158 +1,249 @@
-/* ---------- MAIN APP BACKGROUND ---------- */
+/* General App Styles */
 .app-container {
-  min-height: 100vh;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  font-family: "Inter", sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f8fafc;
 }
 
-/* ---------- COMMENTS BOX ---------- */
 .comments-container {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  border-radius: 18px;
-  padding: 30px;
-  width: 850px;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* ---------- MAIN HEADING ---------- */
 .app-heading {
+  color: #1e293b;
+  font-size: 28px;
+  margin-bottom: 20px;
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 25px;
-  font-weight: 700;
-  letter-spacing: 1px;
 }
 
-/* ---------- FORM SECTION ---------- */
+/* Form Styles */
 .comments-inputs {
   display: flex;
-  justify-content: space-between;
-  gap: 25px;
+  gap: 20px;
+  flex-wrap: wrap;
   align-items: flex-start;
 }
 
 .form {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
 }
 
-.form-description {
-  font-size: 16px;
-  color: #cbd5e1;
-}
-
-/* INPUTS */
 .name-input,
+.password-input,
 .comment-input {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 12px 14px;
-  color: #fff;
-  border-radius: 10px;
-  font-size: 15px;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
   outline: none;
 }
 
-.name-input::placeholder,
-.comment-input::placeholder {
-  color: #d1d5db;
+.name-input:focus,
+.password-input:focus,
+.comment-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
-/* ---------- ADD BUTTON ---------- */
-.add-button {
-  background: #6366f1;
+/* Password container */
+.password-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.show-password-btn {
+  padding: 8px 12px;
   border: none;
-  padding: 12px 18px;
+  border-radius: 6px;
+  background-color: #3b82f6;
   color: white;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
+}
+
+/* Add Comment Button */
+.add-button {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  background-color: #10b981;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .add-button:hover {
-  background: #4f46e5;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+  background-color: #059669;
 }
 
-/* ---------- IMAGE ---------- */
+/* Image */
 .image {
-  width: 320px;
-  border-radius: 16px;
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  max-width: 200px;
+  border-radius: 8px;
 }
 
-/* ---------- LINE ---------- */
+/* Divider */
 .line {
-  border: none;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.2);
   margin: 25px 0;
+  border: 1px solid #e2e8f0;
 }
 
-/* ---------- TOTAL COMMENTS COUNT ---------- */
+/* Comments Count */
 .heading {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Clear All Button */
+.clear-all-button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #ef4444;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
   margin-bottom: 15px;
 }
 
-.comments-count {
-  background: #6366f1;
-  padding: 3px 10px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-right: 10px;
+.clear-all-button:disabled {
+  background-color: #fca5a5;
+  cursor: not-allowed;
 }
 
-/* ---------- COMMENT LIST ---------- */
+/* Comment List */
 .comments-list {
-  margin-top: 10px;
-  padding-left: 0;
-  list-style: none;
+  list-style-type: none;
+  padding: 0;
 }
 
-/* ---------- INITIAL COLORS ---------- */
+/* Comment Item */
+.comment-item {
+  margin-bottom: 20px;
+  background-color: #f1f5f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.comment-container {
+  display: flex;
+  gap: 12px;
+}
+
 .initial-container {
-  height: 55px;
-  width: 55px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  font-size: 22px;
-  color: #ffffff;
-  font-weight: bold;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
 }
 
-/* Dynamic Bgs */
-.amber {
-  background: #f59e0b;
+.amber { background-color: #f59e0b; }
+.blue { background-color: #3b82f6; }
+.orange { background-color: #f97316; }
+.emerald { background-color: #10b981; }
+.teal { background-color: #14b8a6; }
+.red { background-color: #ef4444; }
+.light-blue { background-color: #0ea5e9; }
+
+.username-time-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
-.blue {
-  background: #3b82f6;
+
+.username {
+  font-weight: bold;
+  color: #1e293b;
 }
-.orange {
-  background: #f97316;
+
+.time {
+  color: #64748b;
+  font-size: 12px;
 }
-.emerald {
-  background: #10b981;
+
+.comment {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #334155;
 }
-.teal {
-  background: #14b8a6;
+
+.comment-password {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 5px;
 }
-.red {
-  background: #ef4444;
+
+.password-text {
+  font-weight: bold;
 }
-.light-blue {
-  background: #0ea5e9;
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Like Button */
+.like-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.like-image {
+  width: 20px;
+  height: 20px;
+}
+
+.button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  background-color: #3b82f6;
+  color: white;
+}
+
+.button.active {
+  background-color: #10b981;
+}
+
+/* Delete Button */
+.delete {
+  width: 20px;
+}
+
+/* Divider for each comment */
+.comment-line {
+  border: 1px solid #cbd5e1;
+  margin-top: 10px;
+}
+
+/* No comments message */
+.no-comments {
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
+  margin: 20px 0;
 }

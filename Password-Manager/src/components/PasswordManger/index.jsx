@@ -1,8 +1,7 @@
-import {Component} from 'react'
-import {v4} from 'uuid'
+import { Component } from 'react'
+import { v4 } from 'uuid'
 
 import CommentItem from '../PasswordItem'
-
 import './style.css'
 
 const initialContainerBackgroundClassNames = [
@@ -18,16 +17,16 @@ const initialContainerBackgroundClassNames = [
 class Comments extends Component {
   state = {
     nameInput: '',
+    passwordInput: '',
     commentInput: '',
     commentsList: [],
+    showPasswordInput: false,
   }
 
-  // Delete Comment
+  // Delete single comment
   deleteComment = id => {
     this.setState(prevState => ({
-      commentsList: prevState.commentsList.filter(
-        each => each.id !== id,
-      ),
+      commentsList: prevState.commentsList.filter(each => each.id !== id),
     }))
   }
 
@@ -36,32 +35,43 @@ class Comments extends Component {
     this.setState(prevState => ({
       commentsList: prevState.commentsList.map(each => {
         if (each.id === id) {
-          return {...each, isLiked: !each.isLiked}
+          return { ...each, isLiked: !each.isLiked }
         }
         return each
       }),
     }))
   }
 
-  // Render All Comments
-  renderCommentsList = () => {
-    const {commentsList} = this.state
-    return commentsList.map(each => (
-      <CommentItem
-        key={each.id}
-        commentDetails={each}
-        toggleIsLiked={this.toggleIsLiked}
-        deleteComment={this.deleteComment}
-      />
-    ))
+  // Toggle password visibility for input form
+  toggleShowPasswordInput = () => {
+    this.setState(prevState => ({
+      showPasswordInput: !prevState.showPasswordInput,
+    }))
   }
 
-  // Submit Handler
+  // Toggle password visibility for individual comment
+  togglePasswordVisibility = id => {
+    this.setState(prevState => ({
+      commentsList: prevState.commentsList.map(each => {
+        if (each.id === id) {
+          return { ...each, showPassword: !each.showPassword }
+        }
+        return each
+      }),
+    }))
+  }
+
+  // Clear all comments
+  clearAllComments = () => {
+    this.setState({ commentsList: [] })
+  }
+
+  // Submit new comment
   onAddComment = event => {
     event.preventDefault()
-    const {nameInput, commentInput} = this.state
+    const { nameInput, passwordInput, commentInput } = this.state
 
-    if (nameInput.trim() === '' || commentInput.trim() === '') return
+    if (!nameInput || !passwordInput || !commentInput) return
 
     const randomBgColor =
       initialContainerBackgroundClassNames[
@@ -71,29 +81,53 @@ class Comments extends Component {
     const newComment = {
       id: v4(),
       name: nameInput,
+      password: passwordInput,
       comment: commentInput,
       date: new Date(),
       isLiked: false,
+      showPassword: false,
       initialClassName: `initial-container ${randomBgColor}`,
     }
 
     this.setState(prevState => ({
       commentsList: [...prevState.commentsList, newComment],
       nameInput: '',
+      passwordInput: '',
       commentInput: '',
     }))
   }
 
-  onChangeCommentInput = event => {
-    this.setState({commentInput: event.target.value})
+  onChangeNameInput = event => {
+    this.setState({ nameInput: event.target.value })
   }
 
-  onChangeNameInput = event => {
-    this.setState({nameInput: event.target.value})
+  onChangePasswordInput = event => {
+    this.setState({ passwordInput: event.target.value })
+  }
+
+  onChangeCommentInput = event => {
+    this.setState({ commentInput: event.target.value })
+  }
+
+  renderCommentsList = () => {
+    const { commentsList } = this.state
+    if (commentsList.length === 0) {
+      return <p className="no-comments">No comments yet. Be the first to comment!</p>
+    }
+    return commentsList.map(each => (
+      <CommentItem
+        key={each.id}
+        commentDetails={each}
+        toggleIsLiked={this.toggleIsLiked}
+        deleteComment={this.deleteComment}
+        togglePasswordVisibility={this.togglePasswordVisibility}
+      />
+    ))
   }
 
   render() {
-    const {nameInput, commentInput, commentsList} = this.state
+    const { nameInput, passwordInput, commentInput, commentsList, showPasswordInput } =
+      this.state
 
     return (
       <div className="app-container">
@@ -103,7 +137,7 @@ class Comments extends Component {
           <div className="comments-inputs">
             <form className="form" onSubmit={this.onAddComment}>
               <p className="form-description">
-                Say something about 4.0 Technologies
+                Share your thoughts about 4.0 Technologies
               </p>
 
               <input
@@ -113,6 +147,23 @@ class Comments extends Component {
                 value={nameInput}
                 onChange={this.onChangeNameInput}
               />
+
+              <div className="password-container">
+                <input
+                  type={showPasswordInput ? 'text' : 'password'}
+                  className="password-input"
+                  placeholder="Password"
+                  value={passwordInput}
+                  onChange={this.onChangePasswordInput}
+                />
+                <button
+                  type="button"
+                  className="show-password-btn"
+                  onClick={this.toggleShowPasswordInput}
+                >
+                  {showPasswordInput ? 'Hide' : 'Show'}
+                </button>
+              </div>
 
               <textarea
                 className="comment-input"
@@ -137,9 +188,17 @@ class Comments extends Component {
           <hr className="line" />
 
           <p className="heading">
-            <span className="comments-count">{commentsList.length}</span>
-            Comments
+            <span className="comments-count">{commentsList.length}</span> Comments
           </p>
+
+          <button
+            type="button"
+            className="clear-all-button"
+            onClick={this.clearAllComments}
+            disabled={commentsList.length === 0}
+          >
+            Clear All Comments
+          </button>
 
           <ul className="comments-list">{this.renderCommentsList()}</ul>
         </div>
