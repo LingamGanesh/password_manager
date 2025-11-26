@@ -1,0 +1,97 @@
+/* ---------- Password Item Container ---------- */
+.pm-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pm-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Left Section ---------- */
+.pm-item-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Avatar Circle */
+.pm-avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #6c63ff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  border-radius: 50%;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Website + Username */
+.pm-item-info p {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.pm-item-website {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.pm-item-username {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ---------- Right Section ---------- */
+.pm-item-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Password Text or Stars */
+.pm-password-display {
+  display: flex;
+  align-items: center;
+}
+
+.pm-password-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+}
+
+.pm-stars-img {
+  width: 90px;
+}
+
+/* ---------- Delete Button ---------- */
+.pm-delete-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.pm-delete-btn:hover {
+  transform: scale(1.15);
+}
+
+.pm-delete-img {
+  width: 24px;
+}

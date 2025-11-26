@@ -1,0 +1,279 @@
+/* Basic reset and layout */
+.pm-app-bg {
+  font-family: Roboto, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pm-container {
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Header */
+.pm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(90deg, #9ba9eb 0%, #7683cb 100%);
+  color: white;
+}
+
+.pm-logo {
+  width: 160px;
+}
+
+.pm-top-image {
+  width: 140px;
+}
+
+/* Body */
+.pm-body {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  flex-wrap: wrap;
+  background: #fff;
+}
+
+/* Form */
+.pm-form-section {
+  flex: 1 1 360px;
+  min-width: 280px;
+}
+
+.pm-form-heading {
+  margin: 0 0 12px 0;
+  color: #454f84;
+}
+
+.pm-input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pm-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #e6edf6;
+}
+
+.pm-input-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.pm-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 6px 4px;
+}
+
+/* Add button */
+.pm-add-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.pm-add-btn {
+  background: #0b69ff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Passwords section */
+.pm-passwords-section {
+  flex: 1 1 420px;
+  min-width: 300px;
+}
+
+.pm-passwords-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pm-heading {
+  margin: 0;
+  color: #454f84;
+}
+
+.pm-search-count-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pm-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #e6edf6;
+}
+
+.pm-search-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.pm-search-input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.pm-count {
+  background: #c3caea;
+  color: #454f84;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Show password row */
+.pm-show-passwords-row {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-show-label {
+  cursor: pointer;
+}
+
+/* Divider */
+.pm-divider {
+  margin: 12px 0;
+  border: 0;
+  height: 1px;
+  background: #eef2ff;
+}
+
+/* List */
+.pm-list-section {
+  min-height: 120px;
+}
+
+.pm-no-passwords {
+  text-align: center;
+  padding: 32px 12px;
+}
+
+.pm-no-passwords-img {
+  width: 120px;
+  max-width: 50%;
+}
+
+.pm-no-passwords-text {
+  color: #64748b;
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+/* Password item */
+.pm-passwords-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pm-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #eef2ff;
+}
+
+.pm-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pm-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #9ba9eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.pm-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.pm-item-website {
+  margin: 0;
+  font-weight: 600;
+  color: #454f84;
+}
+
+.pm-item-username {
+  margin: 0;
+  color: #64748b;
+}
+
+.pm-item-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pm-stars-img {
+  width: 80px;
+}
+
+.pm-password-text {
+  margin: 0 6px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.pm-delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: inline-flex;
+}
+
+.pm-delete-img {
+  width: 18px;
+  height: 18px;
+}
